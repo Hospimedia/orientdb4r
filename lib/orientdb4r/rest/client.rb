@@ -253,7 +253,7 @@ module Orientdb4r
 
       filename = options[:file]
       filename = response.headers[:content_disposition].split('filename=')[-1] if filename.nil?
-      File.open(filename, 'w') do |f|
+      File.open(filename, 'wb') do |f|
         f.write rslt
       end
 
