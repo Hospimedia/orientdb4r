@@ -25,6 +25,8 @@ module Orientdb4r
   autoload :DocumentMetadata, 'orientdb4r/rest/model'
 
 
+  MUTEX_CLIENT = Mutex.new
+
   class << self
 
     ###
@@ -37,7 +39,7 @@ module Orientdb4r
         return RestClient.new options
       end
 
-      Thread.exclusive {
+      MUTEX_CLIENT.synchronize {
         Thread.current[:orientdb_client] ||= RestClient.new options
         #Thread.current[:orientdb_client] ||= BinClient.new options
       }
