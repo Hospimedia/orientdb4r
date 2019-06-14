@@ -10,7 +10,7 @@ task :default => :test
 
 namespace :db do
 
-  DB_HOST = 'localhost'
+  DB_HOST = '127.0.0.1'
   DB_PORT = 2480
   DB_NAME = 'temp'
   DB_ROOT_USER = 'root'
